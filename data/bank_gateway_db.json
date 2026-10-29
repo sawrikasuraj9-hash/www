@@ -1,0 +1,36 @@
+{
+  "notifications": [
+    {
+      "id": "bank-1792721521773-gqj5",
+      "bank": "Bank of Ceylon (BOC)",
+      "amount": 1500,
+      "currency": "LKR",
+      "ref": "BOC89421",
+      "rawText": "A/C ***789 Credited with LKR 1500.00 on 23/10/2026. Ref: BOC89421. [Simulated Bank Alert via YASHI Gateway]",
+      "timestamp": 1792721521773,
+      "matched": false
+    },
+    {
+      "id": "bank-init-01",
+      "bank": "Commercial Bank",
+      "amount": 2500,
+      "currency": "LKR",
+      "ref": "84920193",
+      "rawText": "A/C ***123 Credited with LKR 2,500.00 on 22-OCT-2026. Ref: 84920193. Avail Bal: LKR 48,250.00",
+      "timestamp": 1792720607987,
+      "matched": false
+    }
+  ],
+  "pendingSlips": [],
+  "devices": [
+    {
+      "deviceId": "device-sim-01",
+      "deviceName": "Bot Owner Android (Samsung Galaxy)",
+      "token": "yashi_gw_default",
+      "batteryLevel": 94,
+      "lastPing": 1792721521773,
+      "isOnline": true
+    }
+  ],
+  "updatedAt": 1792721521774
+}

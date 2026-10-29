@@ -1,0 +1,140 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account information, wallet balance, and plan",
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "User display name",
+          "maxLength": 64
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 128
+        },
+        "plan": {
+          "type": "string",
+          "description": "Plan tier (mini, pro, or business)",
+          "enum": ["mini", "pro", "business"]
+        },
+        "coins": {
+          "type": "number",
+          "description": "User coin balance"
+        },
+        "botSlotsUsed": {
+          "type": "number",
+          "description": "Number of deployed bot slots in use"
+        },
+        "botSlotsTotal": {
+          "type": "number",
+          "description": "Total allowed bot slots"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        }
+      },
+      "required": ["username", "email", "plan", "coins"]
+    },
+    "BotEntity": {
+      "title": "BotEntity",
+      "description": "Deployed bot instance metadata and configuration",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Bot instance name",
+          "maxLength": 64
+        },
+        "templateName": {
+          "type": "string",
+          "description": "Template name",
+          "maxLength": 64
+        },
+        "status": {
+          "type": "string",
+          "description": "Current bot container status",
+          "enum": ["running", "stopped", "rebuilding", "deploying"]
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Paired WhatsApp phone number",
+          "maxLength": 32
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["name", "status"]
+    },
+    "PurchaseRequestEntity": {
+      "title": "PurchaseRequestEntity",
+      "description": "Customer purchase request for coins or tier plans",
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "string",
+          "description": "Customer Firebase UID",
+          "maxLength": 128
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "Customer email address",
+          "maxLength": 128
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer display name",
+          "maxLength": 64
+        },
+        "itemType": {
+          "type": "string",
+          "description": "Type of item requested",
+          "enum": ["plan", "coin_pack"]
+        },
+        "itemName": {
+          "type": "string",
+          "description": "Name of plan or coin pack",
+          "maxLength": 128
+        },
+        "priceLkr": {
+          "type": "number",
+          "description": "Price in Sri Lankan Rupees"
+        },
+        "status": {
+          "type": "string",
+          "description": "Approval status",
+          "enum": ["PENDING", "APPROVED", "REJECTED"]
+        },
+        "referenceId": {
+          "type": "string",
+          "description": "Unique purchase reference ID",
+          "maxLength": 64
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["customerId", "customerEmail", "itemType", "priceLkr"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Stores individual user account profile and wallet data strictly by Firebase UID"
+    },
+    "/users/{userId}/bots/{botId}": {
+      "schema": "BotEntity",
+      "description": "Stores individual user bot deployments strictly by Firebase UID"
+    },
+    "/purchase_requests/{reqId}": {
+      "schema": "PurchaseRequestEntity",
+      "description": "Stores customer purchase requests accessible only by owner customer or admin"
+    }
+  }
+}

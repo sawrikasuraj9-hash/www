@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="120" fill="#070c18"/>
+  <circle cx="256" cy="256" r="180" fill="#04101e" stroke="#06b6d4" stroke-width="16"/>
+  <path d="M256 140 L340 290 L172 290 Z" fill="none" stroke="#10b981" stroke-width="20" stroke-linejoin="round"/>
+  <circle cx="256" cy="240" r="32" fill="#06b6d4"/>
+  <text x="256" y="410" font-family="monospace" font-size="48" font-weight="bold" fill="#ffffff" text-anchor="middle">YASHI PAY</text>
+</svg>
